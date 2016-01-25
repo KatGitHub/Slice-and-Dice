@@ -1,0 +1,48 @@
+body,div,header,footer,ul,li,nav {
+  margin:0;
+  padding:0;
+}
+#wb-container{
+  
+}
+
+/* Header */
+#wb-header{
+  padding-top:37px;
+  height:565px;
+  background-image: url('../img/header-main.png');
+  background-position: center;
+}
+#wb-header-main{
+  width:960px;
+  height:565px;
+  margin:auto;
+}
+#wb-header-main span{
+  color:white;
+}
+#logo-holder{
+  
+}
+#drawing-holder{
+  position:absolute;
+  top:338px;
+  height:227px;
+  width:100%;
+  background-image:url('../img/drawing.png');
+  background-position: center;
+}
+
+
+/* Main */
+#wb-content{
+  height:572px;
+  background-image:url('../img/bg-content.png');
+}
+
+/* Footer */
+#wb-footer{
+  height:409px;
+  background-image: url('../img/footer.png');
+  background-position: center;
+}
