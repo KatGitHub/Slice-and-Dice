@@ -24,6 +24,23 @@ body,div,header,footer,ul,li,nav {
 #logo-holder{
   
 }
+.wb-navbar{
+  width:618px;
+  background-color:transparent;
+  border-color:transparent;
+  background-image:url('../img/bg-nav.png');
+  background-repeat:no-repeat;
+}
+#carousel-example-generic{
+  margin-top:30px;
+}
+#carousel-example-generic p{
+  color:white;
+  text-align:center;
+}
+.carousel-control.right,.carousel-control.left{
+  background-image:none;
+}
 #drawing-holder{
   position:absolute;
   top:338px;
