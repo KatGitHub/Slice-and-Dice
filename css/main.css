@@ -1,42 +1,84 @@
-body,div,header,footer,ul,li,nav {
+@font-face{
+  font-family:'MyriadPro Semibold';
+  src: url(../fonts/MyriadPro-Semibold.otf);
+}
+body,div,header,footer,ul,li,nav,article,span,h1,h2,h3,p {
   margin:0;
   padding:0;
+  list-style:none;
 }
-#wb-container{
-  
+h3{
+  font-family:'Goudy Bookletter 1911';
+}
+.wb-img{
+  height:210px;
+  background-size:cover;
+}
+.wb-text{
+  height:210px;
+  overflow:hidden;
+}
+#carousel-example-generic{
+  font-family:'Goudy Bookletter 1911';
 }
 
 /* Header */
 #wb-header{
-  padding-top:37px;
-  height:565px;
   background-image: url('../img/header-main.png');
   background-position: center;
 }
-#wb-header-main{
-  width:960px;
+#wb-header.home{
   height:565px;
+}
+#wb-header-main{
   margin:auto;
 }
-#wb-header-main span{
-  color:white;
+#slogan{  
+  font-family:'DroidSans';
+  color:rgba(255,255,255,0.5);
+  text-shadow: rgb(0,0,0) 1px 1px 0px;
+  font-style:italic;
 }
-#logo-holder{
-  
+.btn-holder .btn{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#609ea6+0,4a7b80+100 */
+background: #609ea6; /* Old browsers */
+background: -moz-linear-gradient(top,  #609ea6 0%, #4a7b80 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #609ea6 0%,#4a7b80 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #609ea6 0%,#4a7b80 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#609ea6', endColorstr='#4a7b80',GradientType=0 ); /* IE6-9 */
+color:white;
+font-family:'Goudy Bookletter 1911';
+font-size: 28px;
 }
-.wb-navbar{
-  width:618px;
-  background-color:transparent;
-  border-color:transparent;
-  background-image:url('../img/bg-nav.png');
-  background-repeat:no-repeat;
+.wb-navbar{  
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,cdcdcd+100 */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 0%, #cdcdcd 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#cdcdcd 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #ffffff 0%,#cdcdcd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cdcdcd',GradientType=0 ); /* IE6-9 */
+
+}
+.wb-navbar li a{
+  font-family:'DroidSans';
+  color:#292929;  
+  text-shadow: rgb(255,255,255) 1px 1px 0px;
+}
+.faded{
+  opacity:0.5;
+  font-style:italic;
+}
+#li-logout{
+  display:none;
 }
 #carousel-example-generic{
-  margin-top:30px;
+  margin-top:20px;
 }
-#carousel-example-generic p{
+#carousel-example-generic h1{
   color:white;
-  text-align:center;
+}
+#carousel-example-generic h4{
+  color:rgba(255,255,255,0.4);
 }
 .carousel-control.right,.carousel-control.left{
   background-image:none;
@@ -49,17 +91,99 @@ body,div,header,footer,ul,li,nav {
   background-image:url('../img/drawing.png');
   background-position: center;
 }
+.details-container h2{
+  color:white;
+  font-family:'Goudy Bookletter 1911';
+  margin-left:20px;
+}
+.info-container{
+  font-style:italic;
+  color:rgba(255,255,255,0.5);
+  text-shadow: rgb(0,0,0) 1px 1px 0px;
+  margin-left:20px;
+}
 
 
 /* Main */
-#wb-content{
-  height:572px;
+#wb-main{
   background-image:url('../img/bg-content.png');
+  background-size:cover;
 }
-
+#wb-content img{
+}
+#home-bottom{
+  padding:10px;
+  background-color:white;
+}
+.detail-comment{
+  font-weight: bolder;
+  font-style: italic;
+  color: rgba(0,0,0,0.5);
+}
+.comments-length{
+  font-family:'Goudy Bookletter 1911';
+  font-size:30px;
+  margin-bottom: 10px;
+}
+#btn-comment{
+  margin-top:10px;
+}
+.wb-sidebar{
+  padding: 0px 50px;
+}
+.wb-sidebar li{
+  margin-top: 10px;
+  color:black;
+}
+.wb-sidebar li a{
+  color:rgba(0,0,0,0.7);
+}
+.wb-sidebar h3{
+  margin-top: 10px;
+}
 /* Footer */
 #wb-footer{
-  height:409px;
   background-image: url('../img/footer.png');
   background-position: center;
+  background-size:cover;
+  font-family:'DroidSans';
+  color:rgba(255,255,255,0.5);
+  text-shadow: rgb(0,0,0) 1px 1px 0px;
+}
+
+hr{
+  border-top: 1px solid #ccc;
+}
+
+/* ----------- Laptops ----------- */
+@media only screen and (min-width: 1200px){
+  #wb-header{
+  padding-top:37px;
+  height:283px;
+}
+}
+@media only screen and (min-width: 992px) {
+#wb-header{
+  height:250px;
+}
+#wb-header-main,
+#wb-footer-main,
+#wb-content{
+  width:960px;
+  margin:auto;
+}
+#wb-content{
+  padding:20px;
+}
+.wb-navbar{
+  border-radius:15px;
+}
+.details-container{
+  margin-top: 70px;
+}
+.wb-img{
+  margin-right: 10px;
+}
+
+
 }

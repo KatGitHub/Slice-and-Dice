@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                {{#each newArr}}
+                <article>
+                    <header>
+                        <h3><a href="#/post?id={{Id}}">{{Title}}</a></h3>
+                        <span>Posted by {{CreatedBy.DisplayName}} in {{Category}} on {{FormattedDate}}</span>
+                    </header>
+                    <div class="row">
+                        <div style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}});" class="col-md-5 wb-img"></div>
+                        <div class="col-md-7 wb-text">{{Text}}</div>
+                    </div>
+                </article>
+                <button type="button" class="btn btn-xs pull-right"><a href="#/post?id={{Id}}">Read more</a></button>
+                {{/each}}
+            </div>
+            <div class="row">
+                <nav>
+                    <p>Page {{currentPage}} of {{numberOfPages}}</p>
+                    <ul class="pagination">
+                        {{#list count}}{{/list}}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-4 wb-sidebar">
+            <h3>Recent posts</h3>
+            <ul>
+                {{#each recentPosts}}
+                <li><a href="#/post?id={{Id}}">{{Title}}</a></li>
+                {{/each}}
+            </ul>
+            <h3>Recent comments</h3>
+            <ul>
+                {{#each recentComments}}
+                <li><a href="#/post?id={{PostId}}">{{CreatedBy.DisplayName}}</a></li>
+                {{/each}}
+            </ul>
+            <h3>Archive</h3>
+            <ul>
+                {{#each archivePosts}}
+                <li><a href="#/post?id={{Id}}">{{Title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

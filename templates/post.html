@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            {{#each Post}}
+            <article>
+                <div class="row">
+                    <p class="pull-right">
+                        <div style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}});" class="col-md-5 wb-img pull-left"></div>{{Text}}</p>
+                </div>
+            </article>
+            {{/each}}
+            <hr>
+            <div class="comments-length">{{Comments.length}} comments</div>
+            {{#each Comments}}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="detail-comment">Added by {{CreatedBy.DisplayName}} on {{FormattedDate}}</div>
+                    <div>{{Text}}</div>
+                </div>
+            </div>
+            {{/each}}
+            <textarea class="form-control wb-comment" rows="3" placeholder="Write your comment here.."></textarea>
+            <button type="button" id="btn-comment" class="btn btn-default btn-sm pull-right">Add comment</button>
+        </div>
+        <div class="col-md-4 wb-sidebar">
+            <h3>Recent posts</h3>
+            <ul>
+                {{#each recentPosts}}
+                <li><a href="#/post?id={{Id}}">{{Title}}</a></li>
+                {{/each}}
+            </ul>
+            <h3>Recent comments</h3>
+            <ul>
+                {{#each recentComments}}
+                <li><a href="#/post?id={{PostId}}">{{CreatedBy.DisplayName}}</a></li>
+                {{/each}}
+            </ul>
+            <h3>Archive</h3>
+            <ul>
+                {{#each archivePosts}}
+                <li><a href="#/post?id={{Id}}">{{Title}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
