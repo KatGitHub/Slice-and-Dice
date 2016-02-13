@@ -2,15 +2,15 @@
     <div class="row">
         <div class="col-md-8">
             <div class="row">
-                {{#each newArr}}
+                {{#each postsForPage}}
                 <article>
                     <header>
                         <h3><a href="#/post?id={{Id}}">{{Title}}</a></h3>
                         <span>Posted by {{CreatedBy.DisplayName}} in {{Category}} on {{FormattedDate}}</span>
                     </header>
-                    <div class="row">
-                        <div style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}});" class="col-md-5 wb-img"></div>
-                        <div class="col-md-7 wb-text">{{Text}}</div>
+                    <div class="row visible-xs-block visible-sm-block" style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}}); height:150px; background-size: contain; background-repeat: no-repeat; margin-left: 5px;"></div>
+                    <div class="row wb-article">
+                        <div class="wb-text pull-right"><div style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}});" class="col-md-5 wb-img pull-left hidden-xs hidden-sm"></div>{{Text}}</div>
                     </div>
                 </article>
                 <button type="button" class="btn btn-xs pull-right"><a href="#/post?id={{Id}}">Read more</a></button>
@@ -35,7 +35,7 @@
             <h3>Recent comments</h3>
             <ul>
                 {{#each recentComments}}
-                <li><a href="#/post?id={{PostId}}">{{CreatedBy.DisplayName}}</a></li>
+                <li><a href="#/post?id={{PostId}}">added by {{CreatedBy.DisplayName}}</a></li>
                 {{/each}}
             </ul>
             <h3>Archive</h3>

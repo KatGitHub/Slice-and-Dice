@@ -3,9 +3,10 @@
         <div class="col-md-8">
             {{#each Post}}
             <article>
-                <div class="row">
-                    <p class="pull-right">
-                        <div style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}});" class="col-md-5 wb-img pull-left"></div>{{Text}}</p>
+                <div class="row visible-xs-block visible-sm-block" style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}}); height:150px; background-size: contain; background-repeat: no-repeat; margin-left: 5px;"></div>
+                <div class="row wb-article">
+                    <div class="wb-text pull-right">
+                        <div style="background-image:url({{#if Image}}{{Image}}{{else}}{{/if}});" class="col-md-5 wb-img pull-left hidden-xs hidden-sm"></div>{{Text}}</div>
                 </div>
             </article>
             {{/each}}
@@ -32,7 +33,7 @@
             <h3>Recent comments</h3>
             <ul>
                 {{#each recentComments}}
-                <li><a href="#/post?id={{PostId}}">{{CreatedBy.DisplayName}}</a></li>
+                <li><a href="#/post?id={{PostId}}">added by {{CreatedBy.DisplayName}}</a></li>
                 {{/each}}
             </ul>
             <h3>Archive</h3>

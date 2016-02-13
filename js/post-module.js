@@ -38,8 +38,7 @@ var postModule = (function postModule() {
                         posts,
                         category = context.params.category,
                         count,
-                        pageNumber = context.params.page || 1,
-                        recentPosts;
+                        pageNumber = context.params.page || 1;
 
                     var expandExp = {
                         "CreatedBy": {
@@ -56,19 +55,14 @@ var postModule = (function postModule() {
                         };
                     }
 
-
-
                     expData.get(filter)
                         .then(function(data) {
-                            count = data.result.length;
-                            $.each(data.result, function(index, value) {
-                                value['FormattedDate'] = moment().format("MMMM Do, YYYY");
-                            });
-                            var newArr = _.slice(data.result, pageNumber * 2 - 2, pageNumber * 2);
+                            count = data.result.length;                            
+                            var postsForPage = _.slice(data.result, pageNumber * 2 - 2, pageNumber * 2);
 
                             self.getSidebarPosts(function() {
                                 templateManager.loadTemplate("posts.html", {
-                                    'newArr': newArr,
+                                    'postsForPage': postsForPage,
                                     'count': count,
                                     'currentPage': pageNumber,
                                     'numberOfPages': Math.ceil(count / 2),
@@ -102,9 +96,6 @@ var postModule = (function postModule() {
                     }
                     expData.get(filter)
                         .then(function(data) {
-                                $.each(data.result, function(index, value) {
-                                    value['FormattedDate'] = moment().format("MMMM Do, YYYY");
-                                });
                                 var post = data.result;
                                 var comments;
 
@@ -129,7 +120,7 @@ var postModule = (function postModule() {
                                             $('.details-container').show();
                                             $('.title-container').text(post[0].Title);
                                             $('.info-container').text('Posted by ' + post[0].CreatedBy.DisplayName + ' in ' + post[0].Category + ' on ' + post[0].FormattedDate + ' | ' + comments.length + ' comments');
-
+                                            
                                             self.getSidebarPosts(function() {
                                                 templateManager.loadTemplate("post.html", {
                                                     'Post': post,
@@ -161,11 +152,13 @@ var postModule = (function postModule() {
                     var text = $('#text').val();
                     var image = $('#image').val();
                     var username;
+                    var date = moment().format("MMMM Do, YYYY");
 
                     this.db.data('Posts').create({
                             'Title': title,
                             'Text': text,
-                            'Image': image
+                            'Image': image,
+                            'FormattedDate': date
                         },
                         function(data) {
                             window.location.hash = '#/post?id=' + data.result.Id;
@@ -180,10 +173,12 @@ var postModule = (function postModule() {
                     var self = this;
                     var id = context.params.id;
                     var commentText = $('.wb-comment').val();
+                    var date = moment().format("MMMM Do, YYYY");
 
                     this.db.data('Comments').create({
                             'Text': commentText,
-                            'PostId': id
+                            'PostId': id,
+                            'FormattedDate': date
                         },
                         function(data) {
                             window.location.hash = '#/post?id=1' + id;
@@ -202,7 +197,7 @@ var postModule = (function postModule() {
                     var archivePostsQuery = new Everlive.Query();
                     recentPostsQuery.skip(0).take(5);
                     recentCommentsQuery.skip(0).take(5);
-                    archivePostsQuery.skip(5).take(5);
+                    archivePostsQuery.skip(0).take(5);
                     self.db.data('Posts').get(recentPostsQuery)
                         .then(function(data) {
                             recentPosts = data.result;
